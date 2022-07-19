@@ -58,4 +58,12 @@ jobs:
         TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
 
     - name: Build Solution
-      run: dotnet build src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configuration Release --no-restore -r linux-x64 --self-contained true
+      run: dotnet build src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configuration Release --no-restore -r linux-x64 --self-contained true /bl
+      
+    - name: upload binlog
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: binlog
+        path: |
+            **/*.binlog
