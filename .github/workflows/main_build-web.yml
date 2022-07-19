@@ -58,4 +58,4 @@ jobs:
         TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
 
     - name: Build Solution
-      run: dotnet build src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --no-restore --configuration Release -r linux-x64 --self-contained true
+      run: dotnet build src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configuration Release --no-restore -r linux-x64 --self-contained true
