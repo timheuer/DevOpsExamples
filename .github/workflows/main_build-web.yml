@@ -52,7 +52,7 @@ jobs:
         include-prerelease: true
 
     - name: Restore NuGet Packages
-      run: dotnet restore src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configfile src/NuGet.config -r linux-x64
+      run: dotnet restore src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configfile src/NuGet.Config -r linux-x64
       env:
         TELERIK_USERNAME: ${{ secrets.AUTH_FEED_USER }}
         TELERIK_PASSWORD: ${{ secrets.AUTH_FEED_PWD }}
