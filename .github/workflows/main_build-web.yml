@@ -51,11 +51,11 @@ jobs:
         dotnet-version: 7.0.x
         include-prerelease: true
 
-    - name: Setup auth feed
-      run: dotnet nuget add source https://nuget.telerik.com/nuget -n Telerik -u ${{ secrets.MyTelerikAccountUsername }} -p ${{ secrets.MyTelerikAccountPassword }} --store-password-in-clear-text
-      
     - name: Restore NuGet Packages
-      run: dotnet restore src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --runtime linux-x64
+      run: dotnet restore src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --configfile src/NuGet.config -r linux-x64
+      env:
+        TELERIK_USERNAME: ${{ secrets.AUTH_FEED_USER }}
+        TELERIK_PASSWORD: ${{ secrets.AUTH_FEED_PWD }}
 
     - name: Build Solution
       run: dotnet build src/Web/MyAspNetCoreApp/MyAspNetCoreApp.csproj --no-restore --configuration Release -r linux-x64 --self-contained true
